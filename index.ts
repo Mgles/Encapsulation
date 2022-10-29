@@ -1,134 +1,87 @@
-class Person {
-    name!:string
-    surname!:string
-    constructor(name:string,surname:string){
-        this.surname = surname
-        this.name=name
-    }
-}
-class Employee {
-    surname:string
-    name:string
-    constructor(name:string,surname:string) {
-        this.surname = surname
-        this.name=name
-    }
-}
-class Director {
-    private _managers: Managers[]=[]
-    public getMenegers(): Managers[] {
-        return this._managers
-    }
-    public setMenegers(manager:Managers) {
-        this._managers.push(manager)
-    }
-    public getProjects() {
-        let projects = []
-        for (let i = 0; i < this._managers.length; i++) {
-            projects.push(this._managers[i].projects)
+// //---------fibonchi recursia--------//
+//
+// function fiborec(number:number):number {
+//   let  res:number[] = []
+//     if (number  < 2){
+//         return number;
+//     }else{
+//         return fiborec(number-2) + fiborec(number-1);
+//     }
+// }
+// console.log(fiborec(3))
+//
+// function recurse(num:number):number[]{
+//     let res:number[]=[]
+//     for(let i  = 0;i<num;i++){
+//         res.push(fiborec(i))
+//     }
+//    return res
+// }
+//
+// console.log(recurse(5))
+//
+// function fibo(number: number): number[] {
+//     let res: number[] = []
+//     let x: number = 0
+//     let y: number = 1
+//     res.push(x,y)
+//     let z
+//     for (let i = 0; i < number - 2; i++) {
+//         res.push(x + y)
+//         z = x
+//         x = y
+//         y = z + y
+//     }
+//     return res
+// }
+//
+// // console.log(fibo(7))
+
+
+
+var oneNumber = 0
+var twoNumber = 1
+let res:number[] = []
+function fibo (topNumber:number)
+{
+
+        var fibnumber = oneNumber + twoNumber
+        if( fibnumber < topNumber){
+           res.push(fibnumber)
+            oneNumber = twoNumber
+            twoNumber = fibnumber
+            fibo(topNumber)
         }
-        return projects
-    }
 }
 
-class Managers {
-    name!: string
-    surname!: string
-    projects:Projects[]=[]
-    constructor(name: string, surname: string) {
-        this.surname = surname
-        this.name = name
-    }
-    public setProject(project:Projects) {
-        this.projects.push(project)
-    }
 
-    getProject() {
-        return   this.projects
-    }
-    public getTeamLeads() {
-        let teamLead = []
-        for (let i = 0; i < this.projects.length; i++) {
-            teamLead.push(this.projects[i].teamlid)
-        }
-        return teamLead
-    }
+fibo(10)
+console.log(res)
 
-}
-
-class Projects {
-    name!:string
-    duration!:number
-    teamlid:TeamLid[]=[]
-
-    constructor(name:string,duration:number) {
-        this.name = name
-        this.duration = duration
-    }
-
-    public setTeamLid(lid:TeamLid) {
-        this.teamlid.push(lid)
-    }
+// fibonachi (15)
 
 
-    getTeamLid() {
-        return  this.teamlid
-    }
-    public getDev() {
-        let developer = []
-        for (let i = 0; i < this.teamlid.length; i++) {
-            developer.push(this.teamlid[i].developers)
-        }
-        return developer
-    }
+let startNumber: number = 0
+let secondNumber: number = 1
 
-}
-class TeamLid{
-    name!:string
-    surname!:string
-    developers:Developer[]=[]
+// function fibonachi(topNumber: number): any {
+//     let arr: number[] = []
+//     let fibnumber: number = startNumber + secondNumber
+//     if (fibnumber < topNumber) {
+//         arr.push(startNumber)
+//         arr.push(secondNumber)
+//         startNumber = secondNumber
+//         secondNumber = fibnumber
+//         return arr.push(fibonachi(topNumber))
+//     }
+//     return arr
+// }
 
-    constructor(name:string,surname:string) {
-        this.name = name
-        this.surname = surname
-    }
-
-    public setDeveloper(dev:Developer){
-        this.developers.push(dev)
-    }
-    public getDevelopers(){
-        return  this.developers
-    }
-}
-
-class Developer{
-    name!:string
-    surname!:string
-    constructor(name:string,surname:string) {
-        this.name = name
-        this.surname = surname
-    }
-}
-let developer = new Developer('abo','petoyan')
-let teamlid = new TeamLid('edgar','hohann')
-let project = new Projects('admin',23)
-let project1 = new Projects('dfwre',43)
-let manager = new Managers('aram','mnkj')
-let director = new Director()
+// console.log(fibonachi(22))
 
 
-
-
-console.log('Manages',director.getMenegers())
-director.setMenegers(manager)
-console.log('Manages1',director.getMenegers())
-manager.setProject(project)
-console.log('director project',director.getProjects())
-manager.setProject(project)
-console.log('manager projects',manager.getProject())
-project.setTeamLid(teamlid)
-teamlid.setDeveloper(developer)
-console.log('Manager teamlid', manager.getTeamLeads())
-teamlid.setDeveloper(developer)
-console.log('Team lid developers ', teamlid.getDevelopers())
-
+let fr:number[]=[1,2]
+let gr:number[]=[3,4]
+console.log(fr.push(...gr))
+fr.push(...gr)
+console.log(fr)
